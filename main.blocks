@@ -1,1 +1,1 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="{2Qu61pUggC7AX/?bw+h">left_speed</variable><variable id="~cF4oZ;oV9a*Z]_?HqZk">rigth_spped</variable><variable id="AG=qmXm(QoK*]N8*2X|,">forward_pause</variable><variable id="AaERnSH7$W5Zr!eu(ycF">turn_perc</variable><variable id="5LseZh8oEP`!W!^%pzUw">turn_sec</variable></variables></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><variables></variables><block type="pxt-on-start" id="6G~//xZpH=ffuw.7,FA(" x="0" y="0"></block></xml>
