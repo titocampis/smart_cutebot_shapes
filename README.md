@@ -127,7 +127,7 @@ Make 3 figures with 3 prints on the LEDs screen and 3 color patterns.
 def rest():
     cuteBot.singleheadlights(cuteBot.RGBLights.ALL, 0, 0, 0)
     cuteBot.stopcar()
-    basic.show_string("Let's dance!")
+    basic.show_icon(IconNames.HEART)
 
 # Method when press A
 def on_button_pressed_a():
@@ -139,13 +139,13 @@ def on_button_pressed_a():
         # # # # #
         """)
     for index in range(4):
+        cuteBot.move_time(cuteBot.Direction.RIGHT, square_turn_perc, square_turn_sec)
         cuteBot.motors(square_lspeed, square_rspeed)
         cuteBot.singleheadlights(cuteBot.RGBLights.ALL, 10, 244, 111)
         basic.pause(square_ligths_pause)
         cuteBot.singleheadlights(cuteBot.RGBLights.ALL, 111, 10, 59)
         basic.pause(square_ligths_pause)
         cuteBot.singleheadlights(cuteBot.RGBLights.ALL, 240, 190, 10)
-        cuteBot.move_time(cuteBot.Direction.RIGHT, square_turn_perc, square_turn_sec)
     rest()
 
 # Method when press B
@@ -158,15 +158,15 @@ def on_button_pressed_b():
         # . # . #
         """)
     for index2 in range(3):
+        cuteBot.move_time(cuteBot.Direction.RIGHT,
+                    triangle_turn_perc,
+                    triangle_turn_sec)
         cuteBot.motors(square_lspeed, square_rspeed)
         cuteBot.singleheadlights(cuteBot.RGBLights.ALL, 125, 144, 10)
         basic.pause(square_ligths_pause)
         cuteBot.singleheadlights(cuteBot.RGBLights.ALL, 15, 10, 233)
         basic.pause(square_ligths_pause)
         cuteBot.singleheadlights(cuteBot.RGBLights.ALL, 155, 10, 190)
-        cuteBot.move_time(cuteBot.Direction.RIGHT,
-            triangle_turn_perc,
-            triangle_turn_sec)
     rest()
 
 # Method when press A + B
@@ -195,23 +195,25 @@ def on_button_pressed_ab():
 #########################################################################################
 # Variables
 ## Square
-square_lspeed = 30
-square_rspeed = 26.8
-square_turn_perc = 30
-square_turn_sec = 0.4
+square_lspeed = 50
+square_rspeed = 46
+square_turn_perc = 50
+square_turn_sec = 0.3
 square_ligths_pause = 500
 # square_forward_pause = 3 * square_ligths_pause
 
 ## Triangle
-triangle_turn_perc = 40
-triangle_turn_sec = 0.3
+triangle_turn_perc = 50
+triangle_turn_sec = 0.4
 
 ## Circle
 circle_lspeed = 50
-circle_rspeed = 30
+circle_rspeed = 20
 
 # Execute
-rest()
+cuteBot.singleheadlights(cuteBot.RGBLights.ALL, 0, 0, 0)
+cuteBot.stopcar()
+# basic.show_string("Let's dance!")
 input.on_button_pressed(Button.A, on_button_pressed_a)
 input.on_button_pressed(Button.B, on_button_pressed_b)
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
@@ -273,17 +275,17 @@ def on_button_pressed_ab():
 # Forever 1 method (for movement)
 def on_forever():
     if cont == 1:
-        cuteBot.motors(circle_lspeed, circle_rspeed)
-    elif cont == 2:
-        cuteBot.motors(square_lspeed, square_rspeed)
-        basic.pause(square_forward_pause)
-        cuteBot.move_time(cuteBot.Direction.RIGHT,
-            triangle_turn_perc,
-            triangle_turn_sec)
-    elif cont == 3:
-        cuteBot.motors(square_lspeed, square_rspeed)
-        basic.pause(square_forward_pause)
         cuteBot.move_time(cuteBot.Direction.RIGHT, square_turn_perc, square_turn_sec)
+        cuteBot.motors(square_lspeed, square_rspeed)
+        basic.pause(square_forward_pause)
+    elif cont == 2:
+        cuteBot.move_time(cuteBot.Direction.RIGHT,
+                triangle_turn_perc,
+                triangle_turn_sec)
+        cuteBot.motors(square_lspeed, square_rspeed)
+        basic.pause(square_forward_pause)
+    elif cont == 3:
+        cuteBot.motors(circle_lspeed, circle_rspeed)
     else:
         cuteBot.stopcar()
 
@@ -291,11 +293,11 @@ def on_forever():
 def on_forever2():
     if cont == 1:
         basic.show_leds("""
-                . # # # .
+                # # # # #
                 # . . . #
                 # . . . #
                 # . . . #
-                . # # # .
+                # # # # #
                 """)
     elif cont == 2:
         basic.show_leds("""
@@ -307,11 +309,11 @@ def on_forever2():
                 """)
     elif cont == 3:
         basic.show_leds("""
-                # # # # #
+                . # # # .
                 # . . . #
                 # . . . #
                 # . . . #
-                # # # # #
+                . # # # .
                 """)
     else:
         basic.show_icon(IconNames.HEART)
@@ -348,24 +350,21 @@ def on_forever3():
 #
 #########################################################################################
 # Variables
-## Control
-cont = 0
-
 ## Square
-square_lspeed = 30
-square_rspeed = 26.8
-square_turn_perc = 30
-square_turn_sec = 0.4
+square_lspeed = 50
+square_rspeed = 46
+square_turn_perc = 50
+square_turn_sec = 0.3
 square_ligths_pause = 500
-square_forward_pause = 3 * square_ligths_pause
+square_forward_pause = 1000
 
 ## Triangle
-triangle_turn_perc = 40
-triangle_turn_sec = 0.3
+triangle_turn_perc = 50
+triangle_turn_sec = 0.4
 
 ## Circle
 circle_lspeed = 50
-circle_rspeed = 30
+circle_rspeed = 20
 
 # Execute
 rest()
