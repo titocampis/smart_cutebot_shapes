@@ -219,13 +219,15 @@ input.on_button_pressed(Button.AB, on_button_pressed_ab)
 > def on_button_pressed_a():
 >     global drive
 >     drive = 0
+>
 > input.on_button_pressed(Button.A, on_button_pressed_a)
-
+>
 > drive = 0
 > cuteBot.singleheadlights(cuteBot.RGBLights.ALL, 0, 0, 0)
 > drive = 1
+>
 > while drive == 1:
-     cuteBot.forward()
+>     cuteBot.forward()
 > ```
 
 > Open this page at [https://titocampis.github.io/smart_cutebot_shapes/](https://titocampis.github.io/smart_cutebot_shapes/)
